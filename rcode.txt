@@ -1,0 +1,15 @@
+
+library(rmcfs)
+
+data <- read.table("/media/akshai/New Volume/Uppsala_work_files/sem3/knowledge_based_systems/project/Project1.csv",header=TRUE)
+
+
+result <- mcfs(decision~., data, projections=20,
+               projectionSize=0.1, splits=5, splitSetSize=0.66,
+               cutoffPermutations = 6, threadsNumber = 8)
+               
+               
+head(result$RI)
+plot(result, type="distances")
+
+"save RDS"
